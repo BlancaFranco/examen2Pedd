@@ -8,11 +8,6 @@ import Excepciones.EmptyList;
 import Excepciones.NoSuchElement;
 import Excepciones.WrongPosition;
 
-
-/**
- *
- * Blanca Franco
- */
 public class DoubleLinkedList<T> {
     private Node<T> primero, ultimo;
     private int longitud = 0;
