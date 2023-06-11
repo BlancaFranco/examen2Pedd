@@ -18,21 +18,28 @@ public class DoubleLinkedList<T> {
     public void insert(T dato, int pos) throws WrongPosition{
         if(pos < -1 || pos > longitud+1) throw new WrongPosition("Posicion dede estar entre 1 y "+ (longitud+1));
         Node<T> nuevo = new Node(dato);
-        if(primero == null)
+        if(primero == null){
             primero = ultimo = nuevo;
-        
-        Node<T> temp = primero;
-        if(pos == 1){
-            primero.setAnterior(nuevo);
-            nuevo.setSigte(primero);
-            primero = nuevo;   
+        }
+        else{
+            if(pos == 1){
+                primero.setAnterior(nuevo);
+                nuevo.setSigte(primero);
+                primero = nuevo;   
+
+            }
+        }
+        else if(pos == longitud +1 ){
+            ultimo.setSigte(nuevo);
+            nuevo.setAnterior(ultimo);
+            ultimo = nuevo;
             
         }
         else{
+            Node<T> temp = primero;
             for(int i = 1; i< pos-1; i++){
                 temp= temp.getSigte();
             }
-            
             nuevo.setSigte(temp.getSigte()); //el siguiente de nuevo apunta al nodo actual que esta el pos
             temp.getSigte().setAnterior(nuevo);
             nuevo.setAnterior(temp);
