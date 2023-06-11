@@ -28,26 +28,26 @@ public class DoubleLinkedList<T> {
                 primero = nuevo;   
 
             }
-        }
-        else if(pos == longitud +1 ){
-            ultimo.setSigte(nuevo);
-            nuevo.setAnterior(ultimo);
-            ultimo = nuevo;
+            else if(pos == longitud +1 ){
+                ultimo.setSigte(nuevo);
+                nuevo.setAnterior(ultimo);
+                ultimo = nuevo;
             
-        }
-        else{
-            Node<T> temp = primero;
-            for(int i = 1; i< pos-1; i++){
-                temp= temp.getSigte();
             }
-            nuevo.setSigte(temp.getSigte()); //el siguiente de nuevo apunta al nodo actual que esta el pos
-            temp.getSigte().setAnterior(nuevo);
-            nuevo.setAnterior(temp);
-            temp.setSigte(nuevo);
- 
+            else{
+                Node<T> temp = primero;
+                for(int i = 1; i< pos-1; i++){
+                    temp= temp.getSigte();
+                }
+                nuevo.setSigte(temp.getSigte()); //el siguiente de nuevo apunta al nodo actual que esta el pos
+                temp.getSigte().setAnterior(nuevo);
+                nuevo.setAnterior(temp);
+                temp.setSigte(nuevo);
+            }
         }
         longitud++;
-    }
+     }
+    
     public int remove(T dato) throws NoSuchElement,EmptyList{
         if(longitud ==0) throw new EmptyList();
         Node<T> aux = primero;
